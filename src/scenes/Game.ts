@@ -41,7 +41,7 @@ export class Game extends AScene {
     public initialize() {
         super.initialize();
         this._bg =  Sprite.from("background.png");
-        this.addChild(this._bg)
+        this.addChild(this._bg) //tst
      
     
         this._ground  = new TilingSprite(Texture.from("sol-nes.png"), 1920, 150);
