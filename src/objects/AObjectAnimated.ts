@@ -9,5 +9,7 @@ export class AObjectAnimated extends Container implements IObject
     {
         super();
     }
-    public update(timeDelta: number) {}
+    public update(timeDelta: number) {
+        
+    }
 }

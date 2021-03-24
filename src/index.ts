@@ -78,14 +78,14 @@ export class Main extends Application {
 
         //container for having something solid in the background
         let graphics = new Graphics();
-        graphics.beginFill(0x0000ff);
+        graphics.beginFill(0x000000);
         graphics.drawRect(0, 0, Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
         graphics.endFill();
         this._container.addChild(graphics);
 
         //mask so everything out of the SCREEN_WIDTH && SCREEN_HEIGHT are masked, need a proper container (see top) for a good resizing.
         graphics = new Graphics();
-        graphics.beginFill(0x0ff000);
+        graphics.beginFill(0x000000);
         graphics.drawRect(0, 0, Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
         graphics.endFill();
         this._container.mask = graphics;

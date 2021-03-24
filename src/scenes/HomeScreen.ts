@@ -9,13 +9,21 @@ export class HomeScreen  extends AScene {
     private _timeline = gsap.timeline();
     private _ready = Sprite.from("smb-start-normal.png");
     private _bg !: Sprite;
+    private _soundIcon !: Sprite;
     private _ground !: TilingSprite;
+    private _audio = new Audio('assets/mp3/ending.mp3');
 
     constructor() {
         super();
 
+
         this._bg =  Sprite.from("background.png");
         this.addChild(this._bg)
+
+        this._soundIcon =  Sprite.from("sound-up.png");
+        this.addChild(this._soundIcon)
+        this._soundIcon.x = 20
+        this._soundIcon.y= Main.SCREEN_HEIGHT - this._soundIcon.height - 20
 
         // this._ready = Sprite.from("ready.png");
         this._ready.x = (Main.SCREEN_WIDTH -  this._ready.width) / 2;
@@ -43,11 +51,14 @@ export class HomeScreen  extends AScene {
         this._ready.buttonMode = true; 
 
         this._ready.once("pointerdown", this._play.bind(this));
+        
     }
 
+    
 
     private _play(){
-        // alert('clicked') 
+        // alert('clicked')
+        this._audio.pause(); 
         this._timeline.kill();
         this._ready.alpha = 1;
         gsap.to(this._ready, {
@@ -56,5 +67,12 @@ export class HomeScreen  extends AScene {
                 Main.instance.scene = new Game();
             }
         })
+    }
+
+    private _playSound() {
+        console.log('pppp')
+        this._audio.play();
+
+        this._soundIcon.addEventListener("pointerdown", this._playSound.bind(this));
     }
 }
