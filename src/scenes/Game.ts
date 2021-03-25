@@ -16,6 +16,7 @@ export class Game extends AScene {
     private _player = new Player();
     // private _goomba = AnimatedSprite.fromFrames(["goomba-gauche2.png", "goomba-droite2.png"]);
     private _goomba = new Enemy();
+    
 
     private _objects: IObject[] = [];
 
@@ -25,6 +26,13 @@ export class Game extends AScene {
     private _win = false;
     private _audio = new Audio('assets/mp3/home.mp3');
     public audioGameOver = new Audio('assets/mp3/game-over.mp3');
+
+    private _isEnd = false;
+
+    private _timeTxt = new BitmapText('0 s', {fontName: 'Space Invaders', fontSize: 32});
+    private _time = 0;
+
+    private _tempsJeu = "";
 
     constructor() {
         super();
@@ -48,7 +56,11 @@ export class Game extends AScene {
     public initialize() {
         super.initialize();
         this._bg =  Sprite.from("background.png");
-        this.addChild(this._bg) //tst
+        this.addChild(this._bg)
+
+        this._timeTxt.x = 10;
+        this._timeTxt.y = 20;
+        this.addChild(this._timeTxt);
     
         this._ground  = new TilingSprite(Texture.from("sol-nes.png"), 1920, 150);
         console.log(this._ground.height)
@@ -63,7 +75,9 @@ export class Game extends AScene {
         this._goomba.y = Main.SCREEN_HEIGHT -  this._ground.height - 85;
         this.addChild(this._goomba);
 
-        document.body.addEventListener("click", this._jump.bind(this));
+        // window.addEventListener("space", this._jump.bind(this));
+        // window.addEventListener("keydown", this._onKeyboard.bind(this))
+        window.addEventListener("keyup",  this._onKeyboard.bind(this))
     }
 
     public dipose() {
@@ -79,11 +93,18 @@ export class Game extends AScene {
         this._goomba.update(timeDelta);
           
             
-            if (this._isIntersecting(this._player, this._goomba)){
+            if (!this._isEnd && this._isIntersecting(this._player, this._goomba)){
 
                 this._goomba.hurt = true;
+                this._tempsJeu = this._timeTxt.text;
+                console.log(this._tempsJeu)
                 this._fin()
+              
+                this._isEnd = true;
             }
+
+            this._time += timeDelta / 55;
+            this._timeTxt.text = Math.floor(this._time) + " s"
 
     }
 
@@ -101,27 +122,24 @@ export class Game extends AScene {
     private _fin() {
         this._audio.pause();
         this.audioGameOver.play();
-        // this._goomba.position.x -= 0;
-        this._ground.tilePosition.x = 0;
+        this._ground.tilePosition.x -= 0;
         // console.log('ttt')
         this._player.die();
         setTimeout( () => {
             Main.instance.scene = new GameOver();
-        }, 800)
+        }, 10000)
         // Main.instance.scene = new GameOver();
     }
 
 
     private _jump() {
-        this._player.position.y-=500;
-        // this._player.position.y+=500;
         this._player.jump();
-        console.log('jump')
+        // console.log('jump')
     }
 
     private _onKeyboard(kEvt: KeyboardEvent) {
-        // if (kEvt.key == "ArrowLeft") this._player.direction = kEvt.type == "keydown" ? Direction.Left : Direction.Idle;
-        // else if (kEvt.key == "ArrowRight")
-        //     this._player.direction = kEvt.type == "keydown" ? Direction.Right : Direction.Idle;
+        if (kEvt.keyCode == 32) {
+            this._jump();
+        }
     }
 }

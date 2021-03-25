@@ -54,6 +54,7 @@ export class Main extends Application {
         this.start();
 
         this._loader.add("assets/space_invaders_font.fnt");
+        this._loader.add("assets/mario-font.fnt");
         // this._loader.add("assets/sprites.json");
         this._loader.add("assets/sprites-mario.json");
 

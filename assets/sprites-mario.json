@@ -20,26 +20,6 @@
 				"h": 1082
 			}
 		},
-		"game-over.png": {
-			"frame": {
-				"x": 1923,
-				"y": 1,
-				"w": 721,
-				"h": 376
-			},
-			"rotated": false,
-			"trimmed": false,
-			"spriteSourceSize": {
-				"x": 0,
-				"y": 0,
-				"w": 721,
-				"h": 376
-			},
-			"sourceSize": {
-				"w": 721,
-				"h": 376
-			}
-		},
 		"game-over.jpg": {
 			"frame": {
 				"x": 1,
@@ -58,6 +38,26 @@
 			"sourceSize": {
 				"w": 1920,
 				"h": 1080
+			}
+		},
+		"game-over.png": {
+			"frame": {
+				"x": 1923,
+				"y": 1,
+				"w": 721,
+				"h": 376
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 721,
+				"h": 376
+			},
+			"sourceSize": {
+				"w": 721,
+				"h": 376
 			}
 		},
 		"game-over-full.png": {
@@ -360,10 +360,30 @@
 				"h": 102
 			}
 		},
-		"smb-start-normal.png": {
+		"rules.png": {
 			"frame": {
 				"x": 3845,
 				"y": 1083,
+				"w": 800,
+				"h": 34
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 800,
+				"h": 34
+			},
+			"sourceSize": {
+				"w": 800,
+				"h": 34
+			}
+		},
+		"smb-start-normal.png": {
+			"frame": {
+				"x": 3845,
+				"y": 1119,
 				"w": 600,
 				"h": 301
 			},

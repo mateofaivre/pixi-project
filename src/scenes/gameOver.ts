@@ -6,6 +6,8 @@ import {gsap} from "gsap";
 import { HomeScreen } from "./HomeScreen";
 
 export class GameOver extends AScene {
+
+
     constructor(){
         super();
 
