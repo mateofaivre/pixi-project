@@ -18,7 +18,7 @@ export class HomeScreen  extends AScene {
         super();
 
 
-        this._bg =  Sprite.from("background.png");
+        this._bg =  Sprite.from("bg-mountains.png");
         this.addChild(this._bg)
         this._rules =  Sprite.from("rules.png");
         this.addChild(this._rules)
