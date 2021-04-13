@@ -11,7 +11,14 @@ export class Enemy extends AObjectAnimated {
 
     constructor() {
         super();
-
+        // const index = 0;
+        const number = (Math.floor(Math.random() * (2 - 1 + 1)) + 1);
+        if (number == 1){
+            this._run  = AnimatedSprite.fromFrames(["koopa-down.png", "koopa-up.png"]);
+        }
+        else {
+            this._run  = AnimatedSprite.fromFrames(["goomba-gauche2.png", "goomba-base2.png" , "goomba-droite2.png"]);
+        }
         this.addChild(this._run);
         this._run.animationSpeed =  0.15
         this._run.play();
@@ -28,7 +35,7 @@ else {
 }
 
 if (this.x < (0 - this.width))
-this.kill = true;
+    this.kill = true;
     
     }
 

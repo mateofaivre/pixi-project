@@ -105,7 +105,8 @@ export class Game extends AScene {
         // window.addEventListener("space", this._jump.bind(this));
         // window.addEventListener("keydown", this._onKeyboard.bind(this))
         window.addEventListener("keyup",  this._onKeyboard.bind(this))
-        window.addEventListener("tap",  this._jump.bind(this))
+        // this._bg.on("tap",  this._jump.bind(this))
+        window.addEventListener("pointerdown",  this._jump.bind(this))
     }
 
     public dipose() {
@@ -173,7 +174,7 @@ export class Game extends AScene {
     }
 
     private _fin() {
-        this._ground.tilePosition.x -= 0;
+        this._ground.tilePosition.x = 0;
         this._audio.pause();
         this._audioChoc.play();
         // console.log('ttt')
@@ -187,7 +188,7 @@ export class Game extends AScene {
 
     private _jump() {
         this._player.jump();
-        // console.log('jump')
+        console.log('jump')
     }
 
     private _onKeyboard(kEvt: KeyboardEvent) {
