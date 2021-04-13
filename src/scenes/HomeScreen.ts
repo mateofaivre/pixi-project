@@ -23,7 +23,7 @@ export class HomeScreen  extends AScene {
         this._rules =  Sprite.from("rules.png");
         this.addChild(this._rules)
 
-        this._soundIcon =  Sprite.from("sound-up.png");
+        this._soundIcon =  Sprite.from("sound-mute.png");
         this.addChild(this._soundIcon)
         this._audio.muted = true;
         this._soundPosition();
@@ -46,13 +46,12 @@ export class HomeScreen  extends AScene {
         this._timeline.to( this._ready, {alpha: 0.5, duration: 0.6, yoyo: true, repeat: -1})
         // this._timeline.to( this._rules, {alpha: 0.5, duration: 0.6, yoyo: true, repeat: -1})
  
+        this._bg.interactive = true;
+        this._bg.buttonMode = true; 
 
-        this._ready.interactive = true;
-        this._ready.buttonMode = true; 
+    
 
-        
-
-        this._ready.once("pointerdown", this._play.bind(this));
+        this._bg.once("pointerdown", this._play.bind(this));
         this._soundIcon.on("pointerdown", this._playSound.bind(this)) 
        
     }
@@ -83,14 +82,14 @@ export class HomeScreen  extends AScene {
         if (this._audio.muted){
             this._audio.muted = false;
             this._audio.play();
-            this._soundIcon.texture =  Texture.from("sound-mute.png");
+            this._soundIcon.texture =  Texture.from("sound-up.png");
             this._soundPosition();
         }
 
         else {
             console.log('pause')
             this._audio.muted = true;
-            this._soundIcon.texture = Texture.from("sound-up.png");
+            this._soundIcon.texture = Texture.from("sound-mute.png");
             this._soundPosition();
         }
         

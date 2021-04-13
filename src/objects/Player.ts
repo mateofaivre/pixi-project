@@ -10,12 +10,16 @@ export class Player extends AObjectAnimated
     private _run = AnimatedSprite.fromFrames(["mario-w-ombre.png", "mario-marche.png", "mario-run.png"]);
     private _jump = AnimatedSprite.fromFrames(["mario-jump.png"]);
     private _die = Sprite.from("mario-die.png");
+    private _audioJump = new Audio('assets/mp3/jump.mp3');
 
     private _isJumping = false ;
+
+    private _isDead = false;
 
     constructor() {
         super();
 
+        this._audioJump.volume = 0.2;
         this.addChild(this._run);
         this._run.animationSpeed = 0.15
         this._jump.animationSpeed = 0.1
@@ -30,16 +34,19 @@ export class Player extends AObjectAnimated
         // this.addChild(this._jump)
       
 
-        // this._jump.play();
+        
 
-        if (this._isJumping)
+        if (this._isJumping || this._isDead)
                 return;
+
+                this._audioJump.play(); 
             this.removeChild(this._run); 
             this.addChild(this._jump);
             this._isJumping = true;
-            gsap.to(this, { duration: 0.5, y: 600, yoyo: true, repeat: 1, onComplete: () => {
+            gsap.to(this, { duration: 0.55, y: 515, yoyo: true, repeat: 1, onComplete: () => {
                         this.removeChild(this._jump);
-                        this.addChild(this._run)
+                        if (!this._isDead)
+                            this.addChild(this._run)
                         this._isJumping = false;
                     }, });
             this._jump.play();
@@ -49,7 +56,6 @@ export class Player extends AObjectAnimated
         this.removeChildAt(0);
         this.addChild(this._die);
 
-        // console.log('die')
-
+        this._isDead = true;
     }
 }

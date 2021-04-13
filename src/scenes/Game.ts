@@ -1,21 +1,26 @@
 import { AScene } from "./AScene";
 import { Player } from "../objects/Player";
-import { BitmapText, Sprite, Texture, TilingSprite, Loader, Application, AnimatedSprite } from "pixi.js";
+import { BitmapText, Sprite, Texture, TilingSprite, Loader, Application, AnimatedSprite, Container } from "pixi.js";
 
 import { Main } from "..";
 import { AObject } from "../objects/AObject";
 import { Maths } from "../utils/Maths";
 import { IObject } from "../objects/IObject";
 import { Enemy } from "../objects/enemy";
+import { Koopa } from "../objects/koopa";
 import { GameOver } from "./gameOver";
+import { lookup } from "dns";
+import { AObjectAnimated } from "../objects/AObjectAnimated";
 
 
 export class Game extends AScene {
 
-
     private _player = new Player();
     // private _goomba = AnimatedSprite.fromFrames(["goomba-gauche2.png", "goomba-droite2.png"]);
-    private _goomba = new Enemy();
+    // private _goomba = new Enemy();
+    
+   
+    private _koopa = new Koopa();
     
 
     private _objects: IObject[] = [];
@@ -25,37 +30,58 @@ export class Game extends AScene {
 
     private _win = false;
     private _audio = new Audio('assets/mp3/home.mp3');
-    public audioGameOver = new Audio('assets/mp3/game-over.mp3');
-
+    private _audioChoc = new Audio('assets/mp3/down.mp3');
+   
     private _isEnd = false;
 
     private _timeTxt = new BitmapText('0 s', {fontName: 'Space Invaders', fontSize: 32});
     private _time = 0;
 
-    private _tempsJeu = "";
 
     constructor() {
         super();
         console.log('game launched');
 
+        // setInterval( () => {
+        //     const goomba  = new Enemy();
+        //     goomba.x = (Main.SCREEN_WIDTH - goomba.width);
+        //     goomba.y = Main.SCREEN_HEIGHT -  this._ground.height - goomba.height;
+        //     this.addChild(goomba);
+        //     this._objects.push(goomba)
+        // }, 2000)
+        
         this._audio.play();
         this._player.x = 200;
         this._player.y = 200;
         this.addChild(this._player);
 
-        this._goomba.x = 200;
-        this._goomba.y = 200;
-        this.addChild(this._goomba)
+        this._koopa.x = 100;
+        this._koopa.y = 200;
+        this.addChild(this._koopa)
         // this._goomba.animationSpeed = 0.08; 
         // this._goomba.play();
 
         this._objects.push(this._player);
         //this._objects.push(this._goomba);
+        this._loop();
     }
+
+    private _loop() {
+        let rand = ((Math.random() * (2 - 1 + 1)) + 1) * 1000;
+        // console.log(rand)    
+        setTimeout(() => {  
+            const enemy = new Enemy()
+            enemy.x = 1920;
+            enemy.y = Main.SCREEN_HEIGHT - this._ground.height - enemy.height;
+            this.addChild(enemy);
+            this._objects.push(enemy);
+            this._loop();
+        }, rand);
+    };
 
     public initialize() {
         super.initialize();
-        this._bg =  Sprite.from("background.png");
+        this._bg =  Sprite.from("bg-mountains.png");
         this.addChild(this._bg)
 
         this._timeTxt.x = 10;
@@ -67,17 +93,19 @@ export class Game extends AScene {
         this._ground.y = Main.SCREEN_HEIGHT -   this._ground.height;
         this.addChild(this._ground)
 
+
         this._player.x = (Main.SCREEN_WIDTH - this._player.width) * 0.5;
         this._player.y = Main.SCREEN_HEIGHT -  this._ground.height - this._player.height;
         this.addChild(this._player);
 
-        this._goomba.x = (Main.SCREEN_WIDTH - this._goomba.width);
-        this._goomba.y = Main.SCREEN_HEIGHT -  this._ground.height - 85;
-        this.addChild(this._goomba);
+        this._koopa.x = (Main.SCREEN_WIDTH - this._koopa.width) + 400;
+        this._koopa.y = Main.SCREEN_HEIGHT -  this._ground.height - this._koopa.height;
+        this.addChild(this._koopa);
 
         // window.addEventListener("space", this._jump.bind(this));
         // window.addEventListener("keydown", this._onKeyboard.bind(this))
         window.addEventListener("keyup",  this._onKeyboard.bind(this))
+        window.addEventListener("tap",  this._jump.bind(this))
     }
 
     public dipose() {
@@ -88,27 +116,54 @@ export class Game extends AScene {
     public update(timeDelta: number) {
         super.update(timeDelta);
 
-        this._ground.tilePosition.x -= 4;
-
-        this._goomba.update(timeDelta);
           
-            
-            if (!this._isEnd && this._isIntersecting(this._player, this._goomba)){
+          //update loop
+          this._player.update(timeDelta)
 
-                this._goomba.hurt = true;
-                this._tempsJeu = this._timeTxt.text;
-                console.log(this._tempsJeu)
-                this._fin()
-              
-                this._isEnd = true;
-            }
+          for (const object of this._objects) {
+              object.update(timeDelta)
+          }
 
+          if (!this._isEnd) {
+            this._ground.tilePosition.x -= 4;
             this._time += timeDelta / 55;
             this._timeTxt.text = Math.floor(this._time) + " s"
+        }
+
+          for (const enemy of this._objects.filter(obj => obj instanceof Enemy)) {
+                if (!this._isEnd && this._isIntersecting(this._player, enemy as Enemy)){
+
+                    (enemy as Enemy).hurt=true;
+                
+                    this._ground.tilePosition.x = 0; 
+                    this._fin()
+                
+                    this._isEnd = true;
+                }
+
+                
+
+            }
+
+
+             //garbage
+             for (const object of this._objects) {
+                    if (object.kill){
+                      
+                            this.removeChild(object as unknown as Container);
+                            this._objects.splice(this._objects.indexOf(object), 1)
+                       
+                       
+                    }
+                  
+              }
+
+        // this._objects.update(timeDelta);
+        // // this._koopa.update(timeDelta);
 
     }
 
-    private _isIntersecting(r1 = this._player, r2 = this._goomba): boolean {
+    private _isIntersecting(r1: Container, r2: Container): boolean {
         return !(
             r2.x > r1.x + r1.width ||
             r2.x + r2.width < r1.x ||
@@ -117,17 +172,15 @@ export class Game extends AScene {
         );
     }
 
-
-
     private _fin() {
-        this._audio.pause();
-        this.audioGameOver.play();
         this._ground.tilePosition.x -= 0;
+        this._audio.pause();
+        this._audioChoc.play();
         // console.log('ttt')
         this._player.die();
         setTimeout( () => {
-            Main.instance.scene = new GameOver();
-        }, 10000)
+            Main.instance.scene = new GameOver(Math.floor(this._time));
+        }, 3500)
         // Main.instance.scene = new GameOver();
     }
 
@@ -138,7 +191,7 @@ export class Game extends AScene {
     }
 
     private _onKeyboard(kEvt: KeyboardEvent) {
-        if (kEvt.keyCode == 32) {
+        if (kEvt.keyCode == 32 && !this._isEnd) {
             this._jump();
         }
     }

@@ -1,4 +1,4 @@
-import { Sprite } from "pixi.js";
+import { Sprite, Text, BitmapText } from "pixi.js";
 import { AScene } from "./AScene";
 import { Game } from "./Game";
 import { Main } from "..";
@@ -7,17 +7,28 @@ import { HomeScreen } from "./HomeScreen";
 
 export class GameOver extends AScene {
 
+    private _audioGameOver = new Audio('assets/mp3/game-over.mp3');
 
-    constructor(){
+
+    constructor(timeFinal:number){
+
         super();
-
-        const gameOver = Sprite.from("game-over-full-text.png");
-        gameOver.x = (Main.SCREEN_WIDTH - gameOver.width) / 2;
-        gameOver.y = (Main.SCREEN_HEIGHT - gameOver.height) / 2;
+        const timeFinalTxt = new BitmapText(`Vous n'avez tenu que ${timeFinal} s !`, {fontName: 'Space Invaders', fontSize: 42});
+     
+        const gameOver = Sprite.from("game-over-down.jpg");
+        // gameOver.x = (Main.SCREEN_WIDTH - gameOver.width) / 2;
+        gameOver.y = -80;
         this.addChild(gameOver);
+
+        timeFinalTxt.x= (Main.SCREEN_WIDTH - timeFinalTxt.width) / 2;
+        timeFinalTxt.y= (Main.SCREEN_HEIGHT) / 2 + 80;
+       
+        this.addChild(timeFinalTxt);
 
         gameOver.interactive = true ;
         gameOver.buttonMode = true;
+
+        this._audioGameOver.play();
 
         gsap.to(gameOver,  {alpha: 0.5, duration: 0.8, repeat: -1, yoyo: true})
 

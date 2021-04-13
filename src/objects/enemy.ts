@@ -26,6 +26,9 @@ if (!this.hurt) {
 else {
     this._run.stop();
 }
+
+if (this.x < (0 - this.width))
+this.kill = true;
     
     }
 
