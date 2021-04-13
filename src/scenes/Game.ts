@@ -7,7 +7,7 @@ import { AObject } from "../objects/AObject";
 import { Maths } from "../utils/Maths";
 import { IObject } from "../objects/IObject";
 import { Enemy } from "../objects/enemy";
-import { Koopa } from "../objects/koopa";
+// import { Koopa } from "../objects/koopa";
 import { GameOver } from "./gameOver";
 import { lookup } from "dns";
 import { AObjectAnimated } from "../objects/AObjectAnimated";
@@ -20,7 +20,7 @@ export class Game extends AScene {
     // private _goomba = new Enemy();
     
    
-    private _koopa = new Koopa();
+    // private _koopa = new Koopa();
     
 
     private _objects: IObject[] = [];
@@ -55,9 +55,9 @@ export class Game extends AScene {
         this._player.y = 200;
         this.addChild(this._player);
 
-        this._koopa.x = 100;
-        this._koopa.y = 200;
-        this.addChild(this._koopa)
+        // this._koopa.x = 100;
+        // this._koopa.y = 200;
+        // this.addChild(this._koopa)
         // this._goomba.animationSpeed = 0.08; 
         // this._goomba.play();
 
@@ -98,9 +98,9 @@ export class Game extends AScene {
         this._player.y = Main.SCREEN_HEIGHT -  this._ground.height - this._player.height;
         this.addChild(this._player);
 
-        this._koopa.x = (Main.SCREEN_WIDTH - this._koopa.width) + 400;
-        this._koopa.y = Main.SCREEN_HEIGHT -  this._ground.height - this._koopa.height;
-        this.addChild(this._koopa);
+        // this._koopa.x = (Main.SCREEN_WIDTH - this._koopa.width) + 400;
+        // this._koopa.y = Main.SCREEN_HEIGHT -  this._ground.height - this._koopa.height;
+        // this.addChild(this._koopa);
 
         // window.addEventListener("space", this._jump.bind(this));
         // window.addEventListener("keydown", this._onKeyboard.bind(this))

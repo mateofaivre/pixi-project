@@ -13,7 +13,7 @@ export class GameOver extends AScene {
     constructor(timeFinal:number){
 
         super();
-        const timeFinalTxt = new BitmapText(`Vous n'avez tenu que ${timeFinal} s !`, {fontName: 'Space Invaders', fontSize: 42});
+        const timeFinalTxt = new BitmapText(`You only lasted ${timeFinal} s !`, {fontName: 'Space Invaders', fontSize: 42});
      
         const gameOver = Sprite.from("game-over-down.jpg");
         // gameOver.x = (Main.SCREEN_WIDTH - gameOver.width) / 2;
