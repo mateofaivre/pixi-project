@@ -20,7 +20,7 @@ export class HomeScreen  extends AScene {
 
         this._bg =  Sprite.from("bg-mountains.png");
         this.addChild(this._bg)
-        this._rules =  Sprite.from("rules.png");
+        this._rules =  Sprite.from("rules+.png");
         this.addChild(this._rules)
 
         this._soundIcon =  Sprite.from("sound-mute.png");
@@ -30,7 +30,7 @@ export class HomeScreen  extends AScene {
 
         // this._ready = Sprite.from("ready.png");
         this._ready.x = (Main.SCREEN_WIDTH -  this._ready.width) / 2;
-        this._ready.y =  - this._ready.height;
+        // this._ready.y =  (Main.SCREEN_HEIGHT -  this._ready.height) / 2;
         this.addChild(this._ready)
 
         this._rules.x = (Main.SCREEN_WIDTH -  this._rules.width) / 2;
@@ -40,7 +40,7 @@ export class HomeScreen  extends AScene {
 
 
         this._timeline = gsap.timeline();
-        this._timeline.to( this._ready, {y: (Main.SCREEN_HEIGHT -  this._ready.height - 50) / 2, duration: 0.6, ease: Back.easeOut  })
+        this._timeline.to( this._ready, {y: (Main.SCREEN_HEIGHT -  this._ready.height*2) / 2, duration: 0.6, ease: Back.easeOut  })
         this._timeline.to( this._rules, {y: (Main.SCREEN_HEIGHT -  this._rules.height + this._ready.height + 150) / 2, duration: 0.6, ease: Back.easeOut  })
 
         this._timeline.to( this._ready, {alpha: 0.5, duration: 0.6, yoyo: true, repeat: -1})

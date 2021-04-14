@@ -9,14 +9,12 @@ export class GameOver extends AScene {
 
     private _audioGameOver = new Audio('assets/mp3/game-over.mp3');
 
-
     constructor(timeFinal:number){
 
         super();
         const timeFinalTxt = new BitmapText(`You only lasted ${timeFinal} s !`, {fontName: 'Space Invaders', fontSize: 42});
      
         const gameOver = Sprite.from("game-over-down.jpg");
-        // gameOver.x = (Main.SCREEN_WIDTH - gameOver.width) / 2;
         gameOver.y = -80;
         this.addChild(gameOver);
 
@@ -33,8 +31,6 @@ export class GameOver extends AScene {
         gsap.to(gameOver,  {alpha: 0.5, duration: 0.8, repeat: -1, yoyo: true})
 
         gameOver.once("pointerdown", () => {
-
             Main.instance.scene = new  HomeScreen()});
-
     }
 }

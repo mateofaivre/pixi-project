@@ -30,15 +30,9 @@ export class Player extends AObjectAnimated
 
     public jump() {
 
-        // this.removeChild(this._run);
-        // this.addChild(this._jump)
-      
-
-        
-
         if (this._isJumping || this._isDead)
                 return;
-
+                
                 this._audioJump.play(); 
             this.removeChild(this._run); 
             this.addChild(this._jump);

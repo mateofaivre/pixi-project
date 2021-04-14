@@ -55,17 +55,7 @@ export class Main extends Application {
 
         this._loader.add("assets/space_invaders_font.fnt");
         this._loader.add("assets/mario-font.fnt");
-        // this._loader.add("assets/sprites.json");
-        this._loader.add("assets/sprites-mario.json");
-
-        // this._loader.load( () => {
-        //     console.log('ok');
-        //     const background = Sprite.from("bg-grassland_49.png")
-        //     this.stage.addChild(background)
-        //     this.ticker.add(this.update.bind(this));
-
-        // })
-       
+        this._loader.add("assets/sprites-mario.json");       
 
         this._loader.load(this._onLoaded.bind(this));
 
