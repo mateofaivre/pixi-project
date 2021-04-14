@@ -1,7 +1,7 @@
 import { Container } from "pixi.js";
 import { IObject } from "./IObject";
 
-export class AObjectAnimated extends Container implements IObject
+export abstract class  AObjectAnimated extends Container implements IObject
 {
     public kill = false;
 
@@ -9,5 +9,7 @@ export class AObjectAnimated extends Container implements IObject
     {
         super();
     }
-    public update(timeDelta: number) {}
+    public update(timeDelta: number) {
+        
+    }
 }

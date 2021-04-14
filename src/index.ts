@@ -54,17 +54,8 @@ export class Main extends Application {
         this.start();
 
         this._loader.add("assets/space_invaders_font.fnt");
-        // this._loader.add("assets/sprites.json");
-        this._loader.add("assets/sprites-mario.json");
-
-        // this._loader.load( () => {
-        //     console.log('ok');
-        //     const background = Sprite.from("bg-grassland_49.png")
-        //     this.stage.addChild(background)
-        //     this.ticker.add(this.update.bind(this));
-
-        // })
-       
+        this._loader.add("assets/mario-font.fnt");
+        this._loader.add("assets/sprites-mario.json");       
 
         this._loader.load(this._onLoaded.bind(this));
 
@@ -78,14 +69,14 @@ export class Main extends Application {
 
         //container for having something solid in the background
         let graphics = new Graphics();
-        graphics.beginFill(0x0000ff);
+        graphics.beginFill(0x000000);
         graphics.drawRect(0, 0, Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
         graphics.endFill();
         this._container.addChild(graphics);
 
         //mask so everything out of the SCREEN_WIDTH && SCREEN_HEIGHT are masked, need a proper container (see top) for a good resizing.
         graphics = new Graphics();
-        graphics.beginFill(0x0ff000);
+        graphics.beginFill(0x000000);
         graphics.drawRect(0, 0, Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
         graphics.endFill();
         this._container.mask = graphics;

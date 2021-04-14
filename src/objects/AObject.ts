@@ -4,8 +4,8 @@ import { IObject} from "./IObject"
 export abstract class AObject extends Sprite implements IObject {
     public kill = false;
 
-    constructor(texture: Texture | undefined) {
-        super(texture);
+    constructor(texture:Texture) {
+        super(texture)
     }
 
     public update(timeDelta: number) {}
@@ -14,7 +14,7 @@ export abstract class AObject extends Sprite implements IObject {
         return this.width;
     }
 
-    public getHeihght() {
+    public getHeight() {
         return this.height;
     }
 }

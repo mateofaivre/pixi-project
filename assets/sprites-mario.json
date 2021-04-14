@@ -1,11 +1,11 @@
 {
 	"frames": {
-		"background.png": {
+		"bg-mountains.png": {
 			"frame": {
 				"x": 1,
 				"y": 1,
 				"w": 1920,
-				"h": 1082
+				"h": 1083
 			},
 			"rotated": false,
 			"trimmed": false,
@@ -13,37 +13,37 @@
 				"x": 0,
 				"y": 0,
 				"w": 1920,
-				"h": 1082
+				"h": 1083
 			},
 			"sourceSize": {
 				"w": 1920,
-				"h": 1082
+				"h": 1083
 			}
 		},
-		"goomba.gif": {
+		"game-over-down.jpg": {
 			"frame": {
 				"x": 1,
-				"y": 1085,
-				"w": 200,
-				"h": 200
+				"y": 1086,
+				"w": 1920,
+				"h": 1080
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 200,
-				"h": 200
+				"w": 1920,
+				"h": 1080
 			},
 			"sourceSize": {
-				"w": 200,
-				"h": 200
+				"w": 1920,
+				"h": 1080
 			}
 		},
 		"goomba-base.png": {
 			"frame": {
-				"x": 203,
-				"y": 1085,
+				"x": 1923,
+				"y": 1,
 				"w": 80,
 				"h": 85
 			},
@@ -62,8 +62,8 @@
 		},
 		"goomba-base2.png": {
 			"frame": {
-				"x": 285,
-				"y": 1085,
+				"x": 2005,
+				"y": 1,
 				"w": 80,
 				"h": 85
 			},
@@ -82,8 +82,8 @@
 		},
 		"goomba-droite.png": {
 			"frame": {
-				"x": 367,
-				"y": 1085,
+				"x": 2087,
+				"y": 1,
 				"w": 80,
 				"h": 85
 			},
@@ -102,8 +102,8 @@
 		},
 		"goomba-droite2.png": {
 			"frame": {
-				"x": 449,
-				"y": 1085,
+				"x": 2169,
+				"y": 1,
 				"w": 80,
 				"h": 85
 			},
@@ -122,8 +122,8 @@
 		},
 		"goomba-gauche.png": {
 			"frame": {
-				"x": 531,
-				"y": 1085,
+				"x": 1923,
+				"y": 88,
 				"w": 80,
 				"h": 85
 			},
@@ -142,8 +142,8 @@
 		},
 		"goomba-gauche2.png": {
 			"frame": {
-				"x": 613,
-				"y": 1085,
+				"x": 2005,
+				"y": 88,
 				"w": 80,
 				"h": 85
 			},
@@ -157,13 +157,93 @@
 			},
 			"sourceSize": {
 				"w": 80,
+				"h": 85
+			}
+		},
+		"koopa-down.png": {
+			"frame": {
+				"x": 2087,
+				"y": 88,
+				"w": 65,
+				"h": 95
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 65,
+				"h": 95
+			},
+			"sourceSize": {
+				"w": 65,
+				"h": 95
+			}
+		},
+		"koopa-up.png": {
+			"frame": {
+				"x": 2154,
+				"y": 88,
+				"w": 62,
+				"h": 95
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 62,
+				"h": 95
+			},
+			"sourceSize": {
+				"w": 62,
+				"h": 95
+			}
+		},
+		"mario-die.png": {
+			"frame": {
+				"x": 1923,
+				"y": 185,
+				"w": 101,
+				"h": 102
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 101,
+				"h": 102
+			},
+			"sourceSize": {
+				"w": 101,
+				"h": 102
+			}
+		},
+		"mario-jump.png": {
+			"frame": {
+				"x": 2026,
+				"y": 185,
+				"w": 86,
+				"h": 85
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 86,
+				"h": 85
+			},
+			"sourceSize": {
+				"w": 86,
 				"h": 85
 			}
 		},
 		"mario-marche.png": {
 			"frame": {
-				"x": 695,
-				"y": 1085,
+				"x": 2114,
+				"y": 185,
 				"w": 90,
 				"h": 102
 			},
@@ -180,10 +260,30 @@
 				"h": 102
 			}
 		},
+		"mario-regular.png": {
+			"frame": {
+				"x": 2206,
+				"y": 185,
+				"w": 70,
+				"h": 95
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 70,
+				"h": 95
+			},
+			"sourceSize": {
+				"w": 70,
+				"h": 95
+			}
+		},
 		"mario-run.png": {
 			"frame": {
-				"x": 787,
-				"y": 1085,
+				"x": 1923,
+				"y": 289,
 				"w": 89,
 				"h": 102
 			},
@@ -202,8 +302,8 @@
 		},
 		"mario-w-ombre.png": {
 			"frame": {
-				"x": 878,
-				"y": 1085,
+				"x": 2026,
+				"y": 282,
 				"w": 70,
 				"h": 102
 			},
@@ -220,50 +320,30 @@
 				"h": 102
 			}
 		},
-		"ready.png": {
+		"rules+.png": {
 			"frame": {
-				"x": 950,
-				"y": 1085,
-				"w": 129,
-				"h": 53
+				"x": 2278,
+				"y": 1,
+				"w": 1508,
+				"h": 233
 			},
 			"rotated": false,
 			"trimmed": false,
 			"spriteSourceSize": {
 				"x": 0,
 				"y": 0,
-				"w": 129,
-				"h": 53
+				"w": 1508,
+				"h": 233
 			},
 			"sourceSize": {
-				"w": 129,
-				"h": 53
-			}
-		},
-		"smb-start-big.png": {
-			"frame": {
-				"x": 203,
-				"y": 1189,
-				"w": 1200,
-				"h": 601
-			},
-			"rotated": false,
-			"trimmed": false,
-			"spriteSourceSize": {
-				"x": 0,
-				"y": 0,
-				"w": 1200,
-				"h": 601
-			},
-			"sourceSize": {
-				"w": 1200,
-				"h": 601
+				"w": 1508,
+				"h": 233
 			}
 		},
 		"smb-start-normal.png": {
 			"frame": {
-				"x": 1923,
-				"y": 1,
+				"x": 2278,
+				"y": 236,
 				"w": 600,
 				"h": 301
 			},
@@ -282,8 +362,8 @@
 		},
 		"sol-nes.png": {
 			"frame": {
-				"x": 1,
-				"y": 1792,
+				"x": 1923,
+				"y": 539,
 				"w": 1347,
 				"h": 300
 			},
@@ -299,6 +379,46 @@
 				"w": 1347,
 				"h": 300
 			}
+		},
+		"sound-mute.png": {
+			"frame": {
+				"x": 2880,
+				"y": 236,
+				"w": 76,
+				"h": 60
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 76,
+				"h": 60
+			},
+			"sourceSize": {
+				"w": 76,
+				"h": 60
+			}
+		},
+		"sound-up.png": {
+			"frame": {
+				"x": 2958,
+				"y": 236,
+				"w": 74,
+				"h": 60
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 74,
+				"h": 60
+			},
+			"sourceSize": {
+				"w": 74,
+				"h": 60
+			}
 		}
 	},
 	"meta": {
@@ -307,8 +427,8 @@
 		"image": "spritesheet.png",
 		"format": "RGBA8888",
 		"size": {
-			"w": 2524,
-			"h": 2093
+			"w": 3787,
+			"h": 2167
 		},
 		"scale": "1"
 	}
