@@ -39,7 +39,7 @@ export class Game extends AScene {
     }
 
     private _loop() {
-        let rand = ((Math.random() * (1.15 - 0.65 + 1)) + 0.65) * 1000;
+        let rand = ((Math.random() * (1.25 - 0.8 + 1)) + 0.8) * 1000;
         setTimeout(() => {  
             const enemy = new Enemy()
             enemy.x = 1920;
